@@ -46,6 +46,10 @@ jobs:
           key: ${{ runner.os }}-cargo-${{ hashFiles('./mdbook-pages/Cargo.lock') }}
       - name: Install mdbook and dependencies
         run: cargo install --locked mdbook mdbook-admonish mdbook-linkcheck
+      - name: Replace SUMMARY.MD with LEARNER-SUMMARY.md
+        run: |
+          rm ./mdbook-pages/src/SUMMARY.md
+          mv ./mdbook-pages/src/LEARNER-SUMMARY.md ./mdbook-pages/src/SUMMARY.md
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
