@@ -30,6 +30,7 @@ jobs:
         with: 
           repository: ${{ vars.SDAP_REPO }}
           token: ${{ secrets.SDAP_REPO_TOKEN }}
+          path: sd4-pages
       - name: Install mdBook
         run: |
           curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh -s -- -y
@@ -50,7 +51,9 @@ jobs:
         id: pages
         uses: actions/configure-pages@v3
       - name: Build with mdBook
-        run: mdbook build
+        run: |
+          cd sd4-pages
+          mdbook build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
