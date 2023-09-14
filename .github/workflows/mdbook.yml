@@ -30,7 +30,8 @@ jobs:
         with: 
           repository: ${{ vars.SDAP_REPO }}
           token: ${{ secrets.SDAP_REPO_TOKEN }}
-          path: sd4-pages
+          path: mdbook-pages
+          ref: main
       - name: Install mdBook
         run: |
           curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh -s -- -y
