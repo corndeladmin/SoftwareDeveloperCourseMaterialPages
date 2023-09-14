@@ -22,9 +22,10 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    env:
-      MDBOOK_VERSION: 0.4.21
     steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .
       - uses: actions/checkout@v4
         with: 
           repository: ${{ vars.SDAP_REPO }}
