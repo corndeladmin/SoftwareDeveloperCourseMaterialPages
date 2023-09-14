@@ -32,15 +32,12 @@ jobs:
           token: ${{ secrets.SDAP_REPO_TOKEN }}
           path: mdbook-pages
           ref: main
-      - name: Install mdBook
+      - name: Install rust
         run: |
           curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
       - name: Update rustup
         run: |
           rustup update
-      - name: Install dependencies
-        run: |
-          cargo install --version ${MDBOOK_VERSION} mdbook
       - name: Set up cargo cache
         uses: actions/cache@v3
         with:
