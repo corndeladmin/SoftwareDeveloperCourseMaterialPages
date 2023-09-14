@@ -24,9 +24,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          sparse-checkout: .
-      - uses: actions/checkout@v4
         with: 
           repository: ${{ vars.SDAP_REPO }}
           token: ${{ secrets.SDAP_REPO_TOKEN }}
@@ -46,7 +43,7 @@ jobs:
             ~/.cargo/registry/index
             ~/.cargo/registry/cache
             ~/.cargo/git/db
-          key: ${{ runner.os }}-cargo-${{ hashFiles('./sd4-pages/Cargo.lock') }}
+          key: ${{ runner.os }}-cargo-${{ hashFiles('./mdbook-pages/Cargo.lock') }}
       - name: Install mdbook and dependencies
         run: cargo install --locked mdbook mdbook-admonish mdbook-linkcheck
       - name: Setup Pages
