@@ -45,7 +45,7 @@ jobs:
             ~/.cargo/git/db
           key: ${{ runner.os }}-cargo-${{ hashFiles('./mdbook-pages/Cargo.lock') }}
       - name: Install mdbook and dependencies
-        run: cargo install --locked mdbook mdbook-admonish mdbook-linkcheck
+        run: cargo install --locked mdbook mdbook-admonish mdbook-linkcheck || true
       - name: Replace SUMMARY.MD with LEARNER-SUMMARY.md
         run: |
           rm ./mdbook-pages/src/SUMMARY.md
